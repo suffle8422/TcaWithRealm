@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		BE2D7D0C2AB6DBFC00D4B4FE /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = BE2D7D0B2AB6DBFC00D4B4FE /* Realm */; };
 		BE2D7D0E2AB6DBFC00D4B4FE /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BE2D7D0D2AB6DBFC00D4B4FE /* RealmSwift */; };
+		BE2D7D112AB6DC2200D4B4FE /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2D7D102AB6DC2200D4B4FE /* UserModel.swift */; };
+		BE2D7D132AB6DC3700D4B4FE /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2D7D122AB6DC3700D4B4FE /* UserRepository.swift */; };
+		BE2D7D152AB6DC5800D4B4FE /* UserRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2D7D142AB6DC5800D4B4FE /* UserRepositoryTests.swift */; };
+		BE2D7D192AB6DE2B00D4B4FE /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2D7D182AB6DE2B00D4B4FE /* RealmManager.swift */; };
 		BE8A83A22AB6D2F300346C10 /* TcaWithRealmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8A83A12AB6D2F300346C10 /* TcaWithRealmApp.swift */; };
 		BE8A83A42AB6D2F300346C10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8A83A32AB6D2F300346C10 /* ContentView.swift */; };
 		BE8A83A62AB6D2F700346C10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE8A83A52AB6D2F700346C10 /* Assets.xcassets */; };
@@ -36,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE2D7D102AB6DC2200D4B4FE /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		BE2D7D122AB6DC3700D4B4FE /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		BE2D7D142AB6DC5800D4B4FE /* UserRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryTests.swift; sourceTree = "<group>"; };
+		BE2D7D182AB6DE2B00D4B4FE /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		BE8A839E2AB6D2F300346C10 /* TcaWithRealm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TcaWithRealm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8A83A12AB6D2F300346C10 /* TcaWithRealmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcaWithRealmApp.swift; sourceTree = "<group>"; };
 		BE8A83A32AB6D2F300346C10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,6 +83,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE2D7D0F2AB6DC1200D4B4FE /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				BE2D7D102AB6DC2200D4B4FE /* UserModel.swift */,
+				BE2D7D122AB6DC3700D4B4FE /* UserRepository.swift */,
+				BE2D7D182AB6DE2B00D4B4FE /* RealmManager.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		BE8A83952AB6D2F300346C10 = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +118,7 @@
 			children = (
 				BE8A83A12AB6D2F300346C10 /* TcaWithRealmApp.swift */,
 				BE8A83A32AB6D2F300346C10 /* ContentView.swift */,
+				BE2D7D0F2AB6DC1200D4B4FE /* Realm */,
 				BE8A83A52AB6D2F700346C10 /* Assets.xcassets */,
 				BE8A83A72AB6D2F700346C10 /* Preview Content */,
 			);
@@ -118,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				BE8A83B22AB6D2F700346C10 /* TcaWithRealmTests.swift */,
+				BE2D7D142AB6DC5800D4B4FE /* UserRepositoryTests.swift */,
 			);
 			path = TcaWithRealmTests;
 			sourceTree = "<group>";
@@ -269,6 +289,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE8A83A42AB6D2F300346C10 /* ContentView.swift in Sources */,
+				BE2D7D112AB6DC2200D4B4FE /* UserModel.swift in Sources */,
+				BE2D7D192AB6DE2B00D4B4FE /* RealmManager.swift in Sources */,
+				BE2D7D132AB6DC3700D4B4FE /* UserRepository.swift in Sources */,
 				BE8A83A22AB6D2F300346C10 /* TcaWithRealmApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE2D7D152AB6DC5800D4B4FE /* UserRepositoryTests.swift in Sources */,
 				BE8A83B32AB6D2F700346C10 /* TcaWithRealmTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
