@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct TcaWithRealmApp: App {
+    static let store = Store(initialState: UserListStore.State()) {
+        UserListStore()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            UserList(store: TcaWithRealmApp.store)
         }
     }
 }

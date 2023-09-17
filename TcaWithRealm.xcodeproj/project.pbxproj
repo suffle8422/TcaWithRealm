@@ -12,10 +12,10 @@
 		BE2D7D112AB6DC2200D4B4FE /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2D7D102AB6DC2200D4B4FE /* UserModel.swift */; };
 		BE2D7D132AB6DC3700D4B4FE /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2D7D122AB6DC3700D4B4FE /* UserRepository.swift */; };
 		BE2D7D152AB6DC5800D4B4FE /* UserRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2D7D142AB6DC5800D4B4FE /* UserRepositoryTests.swift */; };
-		BE2D7D192AB6DE2B00D4B4FE /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2D7D182AB6DE2B00D4B4FE /* RealmManager.swift */; };
 		BE2D7D1D2AB6EBD100D4B4FE /* UserListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2D7D1C2AB6EBD100D4B4FE /* UserListStore.swift */; };
 		BE2D7D1F2AB6ECFD00D4B4FE /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2D7D1E2AB6ECFD00D4B4FE /* UserList.swift */; };
 		BE2D7D222AB6EFA100D4B4FE /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = BE2D7D212AB6EFA100D4B4FE /* ComposableArchitecture */; };
+		BE2D7D242AB6F1FC00D4B4FE /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2D7D232AB6F1FC00D4B4FE /* UserClient.swift */; };
 		BE8A83A22AB6D2F300346C10 /* TcaWithRealmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8A83A12AB6D2F300346C10 /* TcaWithRealmApp.swift */; };
 		BE8A83A42AB6D2F300346C10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8A83A32AB6D2F300346C10 /* ContentView.swift */; };
 		BE8A83A62AB6D2F700346C10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE8A83A52AB6D2F700346C10 /* Assets.xcassets */; };
@@ -46,9 +46,9 @@
 		BE2D7D102AB6DC2200D4B4FE /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		BE2D7D122AB6DC3700D4B4FE /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		BE2D7D142AB6DC5800D4B4FE /* UserRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryTests.swift; sourceTree = "<group>"; };
-		BE2D7D182AB6DE2B00D4B4FE /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		BE2D7D1C2AB6EBD100D4B4FE /* UserListStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListStore.swift; sourceTree = "<group>"; };
 		BE2D7D1E2AB6ECFD00D4B4FE /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
+		BE2D7D232AB6F1FC00D4B4FE /* UserClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClient.swift; sourceTree = "<group>"; };
 		BE8A839E2AB6D2F300346C10 /* TcaWithRealm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TcaWithRealm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8A83A12AB6D2F300346C10 /* TcaWithRealmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcaWithRealmApp.swift; sourceTree = "<group>"; };
 		BE8A83A32AB6D2F300346C10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,7 +94,6 @@
 			children = (
 				BE2D7D102AB6DC2200D4B4FE /* UserModel.swift */,
 				BE2D7D122AB6DC3700D4B4FE /* UserRepository.swift */,
-				BE2D7D182AB6DE2B00D4B4FE /* RealmManager.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -104,6 +103,7 @@
 			children = (
 				BE2D7D1C2AB6EBD100D4B4FE /* UserListStore.swift */,
 				BE2D7D1E2AB6ECFD00D4B4FE /* UserList.swift */,
+				BE2D7D232AB6F1FC00D4B4FE /* UserClient.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -307,8 +307,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE8A83A42AB6D2F300346C10 /* ContentView.swift in Sources */,
+				BE2D7D242AB6F1FC00D4B4FE /* UserClient.swift in Sources */,
 				BE2D7D112AB6DC2200D4B4FE /* UserModel.swift in Sources */,
-				BE2D7D192AB6DE2B00D4B4FE /* RealmManager.swift in Sources */,
 				BE2D7D132AB6DC3700D4B4FE /* UserRepository.swift in Sources */,
 				BE2D7D1D2AB6EBD100D4B4FE /* UserListStore.swift in Sources */,
 				BE2D7D1F2AB6ECFD00D4B4FE /* UserList.swift in Sources */,

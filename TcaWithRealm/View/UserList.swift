@@ -14,11 +14,15 @@ struct UserList: View {
     var body: some View {
         NavigationStack {
             WithViewStore(self.store, observe: { $0 }) { viewStore in
+                Text("count: \(viewStore.state.count)")
                 List(viewStore.state.users) { user in
                     VStack(alignment: .leading) {
                         Text("name: \(user.name)")
                         Text("age: \(user.age)")
                     }
+                }
+                .task {
+                    viewStore.send(.setup)
                 }
                 .navigationTitle("ユーザーリスト")
                 .toolbar {
@@ -29,9 +33,6 @@ struct UserList: View {
                             Image(systemName: "plus")
                         }
                     }
-                }
-                .task {
-                    viewStore.send(.setup)
                 }
             }
         }

@@ -10,37 +10,40 @@ import RealmSwift
 @testable import TcaWithRealm
 
 class UserRepositoryTests: XCTestCase {
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-        let configuration = Realm.Configuration(inMemoryIdentifier: "test")
-        let realmForTest = try! Realm(configuration: configuration)
-        RealmManager.inject(realmForTest)
-    }
+    let realmForTest = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "test"))
     
     override func tearDown() {
-        RealmManager.transact {
-            RealmManager.shared.realm.deleteAll()
+        do {
+            try realmForTest.write {
+                realmForTest.deleteAll()
+            }
+        } catch {
+            XCTFail()
         }
         super.tearDown()
     }
     
     func testFindAll() {
-        let users = UserRepository.findAll()
+        let users = UserRepository.shared.findAll(realm: realmForTest)
         XCTAssertEqual(users.count, 0)
         
-        let user = User(userName: "aaa", age: 10)
-        RealmManager.transact {
-            RealmManager.shared.realm.add(user)
+        let user = User(name: "aaa", age: 10)
+        do {
+            try realmForTest.write {
+                self.realmForTest.add(user)
+            }
+        } catch {
+            XCTFail()
         }
         XCTAssertEqual(users.count, 1)
     }
     
     func testCreate() {
-        let users = RealmManager.shared.realm.objects(User.self)
+        let users = realmForTest.objects(User.self)
         XCTAssertEqual(users.count, 0)
         
-        let user = User(userName: "aaa", age: 10)
-        UserRepository.create(user: user)
+        let user = User(name: "aaa", age: 10)
+        UserRepository.shared.create(user: user, realm: realmForTest)
         
         XCTAssertEqual(users.count, 1)
     }
