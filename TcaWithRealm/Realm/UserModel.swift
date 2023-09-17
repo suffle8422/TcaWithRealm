@@ -17,7 +17,7 @@ class User: Object, ObjectKeyIdentifiable {
         return "id"
     }
     
-    convenience init(userName: String, age: Int) {
+    convenience init(name: String, age: Int) {
         self.init()
         self.id = UUID().uuidString
         self.name = name
