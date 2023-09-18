@@ -13,7 +13,7 @@ import ComposableArchitecture
 struct UserClient {
     var create: (User) async -> Void
     var results: () async -> Results<User>
-    var getPublisher: () -> RealmPublishers.Value<Results<User>>
+    var subject: PassthroughSubject<[User], Never>
 }
 
 extension UserClient: DependencyKey {
@@ -24,9 +24,7 @@ extension UserClient: DependencyKey {
         results: {
             return UserRepository.shared.findAll()
         },
-        getPublisher: {
-            return UserRepository.shared.publisher
-        }
+        subject: UserRepository.shared.userSubject
     )
 }
 

@@ -14,7 +14,6 @@ struct UserList: View {
     var body: some View {
         NavigationStack {
             WithViewStore(self.store, observe: { $0 }) { viewStore in
-                Text("count: \(viewStore.state.count)")
                 List(viewStore.state.users) { user in
                     VStack(alignment: .leading) {
                         Text("name: \(user.name)")
