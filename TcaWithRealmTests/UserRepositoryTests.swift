@@ -10,41 +10,49 @@ import RealmSwift
 @testable import TcaWithRealm
 
 class UserRepositoryTests: XCTestCase {
-    let realmForTest = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "test"))
+    var realm: Realm!
     
-    override func tearDown() {
-        do {
-            try realmForTest.write {
-                realmForTest.deleteAll()
-            }
-        } catch {
-            XCTFail()
-        }
-        super.tearDown()
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+        let configuration = Realm.Configuration(inMemoryIdentifier: "test")
+        realm = try Realm(configuration: configuration)
+        RealmManager.inject(realm)
     }
     
+    override func tearDownWithError() throws {
+        try super.tearDownWithError()
+        RealmManager.transact {
+            RealmManager.shared.realm.deleteAll()
+        }
+    }
+    
+    
     func testFindAll() {
-        let users = UserRepository.shared.findAll(realm: realmForTest)
-        XCTAssertEqual(users.count, 0)
+        let realm = RealmManager.shared.realm
+        guard let results = UserRepository.shared.findAll().results else {
+            XCTFail()
+            return
+        }
+        XCTAssertEqual(results.count, 0)
         
         let user = User(name: "aaa", age: 10)
         do {
-            try realmForTest.write {
-                self.realmForTest.add(user)
+            try realm.write {
+                realm.add(user)
             }
         } catch {
             XCTFail()
         }
-        XCTAssertEqual(users.count, 1)
+        XCTAssertEqual(results.count, 1)
     }
     
     func testCreate() {
-        let users = realmForTest.objects(User.self)
+        let realm = RealmManager.shared.realm
+        let users = realm.objects(User.self)
         XCTAssertEqual(users.count, 0)
-        
-        let user = User(name: "aaa", age: 10)
-        UserRepository.shared.create(user: user, realm: realmForTest)
-        
-        XCTAssertEqual(users.count, 1)
+        Task { @MainActor in
+            try! await UserRepository.shared.create(name: "aaa", age: 10)
+            XCTAssertEqual(users.count, 1)
+        }
     }
 }

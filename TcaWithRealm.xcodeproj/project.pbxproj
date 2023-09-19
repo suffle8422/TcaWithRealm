@@ -22,6 +22,7 @@
 		BE8A83B32AB6D2F700346C10 /* TcaWithRealmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8A83B22AB6D2F700346C10 /* TcaWithRealmTests.swift */; };
 		BE8A83BD2AB6D2F700346C10 /* TcaWithRealmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8A83BC2AB6D2F700346C10 /* TcaWithRealmUITests.swift */; };
 		BE8A83BF2AB6D2F700346C10 /* TcaWithRealmUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8A83BE2AB6D2F700346C10 /* TcaWithRealmUITestsLaunchTests.swift */; };
+		D498C1BD2AB9662700825E67 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D498C1BC2AB9662700825E67 /* RealmManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		BE8A83B82AB6D2F700346C10 /* TcaWithRealmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TcaWithRealmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8A83BC2AB6D2F700346C10 /* TcaWithRealmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcaWithRealmUITests.swift; sourceTree = "<group>"; };
 		BE8A83BE2AB6D2F700346C10 /* TcaWithRealmUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcaWithRealmUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D498C1BC2AB9662700825E67 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 			children = (
 				BE2D7D102AB6DC2200D4B4FE /* UserModel.swift */,
 				BE2D7D122AB6DC3700D4B4FE /* UserRepository.swift */,
+				D498C1BC2AB9662700825E67 /* RealmManager.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				BE2D7D132AB6DC3700D4B4FE /* UserRepository.swift in Sources */,
 				BE2D7D1D2AB6EBD100D4B4FE /* UserListStore.swift in Sources */,
 				BE2D7D1F2AB6ECFD00D4B4FE /* UserList.swift in Sources */,
+				D498C1BD2AB9662700825E67 /* RealmManager.swift in Sources */,
 				BE8A83A22AB6D2F300346C10 /* TcaWithRealmApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

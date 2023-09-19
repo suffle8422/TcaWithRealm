@@ -23,16 +23,10 @@ final class UserRepository {
     
     var userSubject = PassthroughSubject<[User], Never>()
     
-    private let realm: Realm!
-    
-    init() {
-        realm = try! Realm()
-    }
-    
     // MARK: -
     
     func findAll() -> ResultsWrapper<User> {
-        let object = realm.objects(User.self)
+        let object = RealmManager.shared.realm.objects(User.self)
         return .init(results: object)
     }
     
@@ -43,6 +37,7 @@ final class UserRepository {
     }
     
     func create(name: String, age: Int) async throws {
+        let realm = RealmManager.shared.realm
         try! await realm.asyncWrite({
             realm.add(User(name: name, age: age))
         })
