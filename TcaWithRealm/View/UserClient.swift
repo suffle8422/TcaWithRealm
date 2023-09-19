@@ -11,20 +11,23 @@ import Combine
 import ComposableArchitecture
 
 struct UserClient {
-    var create: (User) async -> Void
-    var results: () async -> Results<User>
-    var publisher: AnyPublisher<[User], Never>
+    typealias UserParamerter = (name: String, age: Int)
+    var create: (UserParamerter) async -> Void
+    var results: () async -> ResultsWrapper<User>
+    var publisher: AnyPublisher<ResultsWrapper<User>, Error>
 }
 
 extension UserClient: DependencyKey {
     static let liveValue = Self(
         create: { user in
-            UserRepository.shared.create(user: user)
+            try! await UserRepository.shared.create(name: user.name, age: user.age)
         },
         results: {
             return UserRepository.shared.findAll()
         },
-        publisher: UserRepository.shared.userSubject.eraseToAnyPublisher()
+        publisher: {
+            return UserRepository.shared.publisher()
+        }()
     )
 }
 
