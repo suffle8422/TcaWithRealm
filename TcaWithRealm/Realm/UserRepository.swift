@@ -9,45 +9,43 @@ import Foundation
 import Combine
 import RealmSwift
 
+struct ResultsWrapper <Element: RealmCollectionValue> {
+    let results: Results<Element>?
+    var isError: Bool { return results == nil }
+    func makeArray() -> [Element] {
+        guard let results else { return [] }
+        return Array(results)
+    }
+}
+
 final class UserRepository {
     static let shared = UserRepository()
     
-    private var token: NotificationToken?
     var userSubject = PassthroughSubject<[User], Never>()
     
+    private let realm: Realm!
+    
     init() {
-        let realm = try! Realm()
-        let  results = realm.objects(User.self)
-        
-        token = results.observe { [weak self] changes in
-            guard let self else { return }
-            switch changes {
-            case .initial(let results):
-                self.userSubject.send(Array(results))
-            case .update(let results, _, _, _):
-                self.userSubject.send(Array(results))
-            case .error(let error):
-                debugPrint(error)
-            }
-        }
+        realm = try! Realm()
     }
     
     // MARK: -
     
-    func findAll(realm: Realm = try! Realm()) -> Results<User> {
+    func findAll() -> ResultsWrapper<User> {
         let object = realm.objects(User.self)
-        return object
+        return .init(results: object)
     }
     
-    func create(user: User, realm: Realm = try! Realm()) {
-        do {
-            try realm.write {
-                realm.add(user)
-            }
-        } catch {
-            debugPrint(error)
-        }
+    func publisher() -> AnyPublisher<ResultsWrapper<User>, Error> {
+        return findAll().results!.collectionPublisher.freeze()
+            .map { ResultsWrapper(results: $0) }
+            .eraseToAnyPublisher()
     }
     
+    func create(name: String, age: Int) async throws {
+        try! await realm.asyncWrite({
+            realm.add(User(name: name, age: age))
+        })
+    }
 }
 
