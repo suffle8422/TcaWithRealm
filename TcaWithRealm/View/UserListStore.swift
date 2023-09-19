@@ -18,7 +18,7 @@ struct UserListStore: Reducer {
     enum Action {
         case setup
         case addButtonTapped
-        case test([User])
+        case updateUsers([User])
     }
     
     @Dependency(\.userClient) var userClient
@@ -26,18 +26,13 @@ struct UserListStore: Reducer {
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
-            case let .test(users): 
+            case let .updateUsers(users):
                 state.users = users
 
             case .setup:
-                // ユーザー一覧のの購読
-//                let cancellable = userClient.publisher.receive(on: DispatchQueue.main).sink(receiveValue: { users in
-//                    debugPrint("hoge", users.count)
-//                })
-
                 return .publisher {
                     userClient.publisher.replaceError(with: .init(results: nil)).map { users in
-                        return .test(users.makeArray())
+                        return .updateUsers(users.makeArray())
                     }
                 }
                 
