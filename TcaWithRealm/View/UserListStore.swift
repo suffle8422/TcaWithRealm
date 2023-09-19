@@ -29,8 +29,7 @@ struct UserListStore: Reducer {
             switch action {
             case .setup:
                 // ユーザー一覧のの購読
-                let cancellable = userClient.publisher.receive(on: DispatchQueue.main).sink(receiveCompletion: { _ in
-                }, receiveValue: { users in
+                let cancellable = userClient.publisher.receive(on: DispatchQueue.main).sink(receiveValue: { users in
                     debugPrint("hoge", users.count)
                 })
                 return .run { send in
