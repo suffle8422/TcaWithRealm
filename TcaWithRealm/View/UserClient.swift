@@ -13,7 +13,7 @@ import ComposableArchitecture
 struct UserClient {
     var create: (User) async -> Void
     var results: () async -> Results<User>
-    var subject: PassthroughSubject<[User], Never>
+    var publisher: AnyPublisher<[User], Never>
 }
 
 extension UserClient: DependencyKey {
@@ -24,7 +24,7 @@ extension UserClient: DependencyKey {
         results: {
             return UserRepository.shared.findAll()
         },
-        subject: UserRepository.shared.userSubject
+        publisher: UserRepository.shared.userSubject.eraseToAnyPublisher()
     )
 }
 
